@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+asyncpg
+databases[postgresql]
+SQLAlchemy
+psycopg[binary]
+psycopg2
+# dev
+pytest
+httpx
