@@ -46,6 +46,7 @@ jobs:
     needs: build
     env: 
       DB_URL: "sqlite:///./test.db"
+      GH_TOKEN: ${{ github.token}}
     steps:
       - name: checkout code
         uses: actions/checkout@v3
