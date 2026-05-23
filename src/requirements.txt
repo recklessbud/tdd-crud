@@ -8,3 +8,10 @@ psycopg2
 # dev
 pytest
 httpx
+bandit
+detect-secrets
+black
+isort
+mypy
+flake8
+pre-commit

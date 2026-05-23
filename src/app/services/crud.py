@@ -1,5 +1,5 @@
+from app.db import db, notes
 from app.models import NoteSchema
-from app.db import notes, db
 
 
 async def crud_notes_create(note: NoteSchema):

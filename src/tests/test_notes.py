@@ -1,4 +1,5 @@
 import json
+
 import pytest
 
 from app.api import notes
@@ -40,7 +41,6 @@ def test_get_notes(test_client, monkeypatch):
 
 
 def test_invalid_id(test_client, monkeypatch):
-  
     async def mock_get_data(id):
         return None
 
@@ -101,7 +101,6 @@ def test_update_note(test_client, monkeypatch):
     ],
 )
 def test_update_note_invalid(test_client, monkeypatch, id, payload, status_code):
-
     async def mock_get(id):
         return None
 

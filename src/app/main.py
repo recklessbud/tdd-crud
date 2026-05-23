@@ -1,10 +1,12 @@
 """Main module."""
 import contextlib
+
 from fastapi import FastAPI
+
+from app.api.notes import router as notes_router
 from app.api.ping import router
 from app.db import db
 
-from app.api.notes import router as notes_router
 
 @contextlib.asynccontextmanager
 async def lifespan(src: FastAPI):

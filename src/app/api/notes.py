@@ -1,13 +1,13 @@
 from fastapi import APIRouter, HTTPException, status
 
+from app.models import NoteCreateResponse, NoteSchema
 from app.services.crud import (
     crud_notes_create,
-    getSingle,
-    fetch_all,
-    put_data,
     delete_data,
+    fetch_all,
+    getSingle,
+    put_data,
 )
-from app.models import NoteSchema, NoteCreateResponse
 
 router = APIRouter()
 

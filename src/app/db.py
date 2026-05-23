@@ -1,7 +1,7 @@
 import os
+
 from databases import Database
-from sqlalchemy import create_engine, MetaData
-from sqlalchemy import Column, DateTime, Integer, String, Table
+from sqlalchemy import Column, DateTime, Integer, MetaData, String, Table, create_engine
 from sqlalchemy.sql import func
 
 DB_URL = os.getenv("DB_URL")
