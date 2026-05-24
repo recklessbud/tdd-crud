@@ -1,0 +1,1 @@
+`docker run -u zap -v ${PWD}:/zap/wrk/:rw zaproxy/zap-stable zap-api-scan.py -t http://host.docker.internal:8004/openapi.json -f openapi -r zap_report.html -m 3`
