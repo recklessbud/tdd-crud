@@ -26,7 +26,7 @@ jobs:
           python-version: "3.10"
 
       - name: Install Bandit
-        run: pip install bandit bandit-sarif-formatter
+        run: pip install bandit
 
       - name: Run Bandit
         run: |
@@ -36,7 +36,8 @@ jobs:
             --exit-zero
       - name: Convert Bandit SARIF to CodeQL SARIF
         run: |    
-          python -m bandit-sarif-formatter \
+          pip install bandit-sarif-formatter
+          bandit-sarif-formatter \
             -i bandit.json \
             -o bandit.sarif
 
