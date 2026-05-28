@@ -16,7 +16,7 @@ def test_create_note(test_client, monkeypatch):
 
     response = test_client.post(
         "/notes/",
-        content=json.dumps(test_request_payload),
+        json=test_request_payload,
     )
 
     assert response.status_code == 201
@@ -87,7 +87,7 @@ def test_update_note(test_client, monkeypatch):
 
     monkeypatch.setattr(notes, "put_data", mock_put_data)
 
-    request = test_client.put("/notes/4", content=json.dumps(test_request_payload))
+    request = test_client.put("/notes/4", json=test_request_payload)
     assert request.status_code == 200
     assert request.json() == test_response_payload
 
@@ -105,7 +105,7 @@ def test_update_note_invalid(test_client, monkeypatch, id, payload, status_code)
         return None
 
     monkeypatch.setattr(notes, "getSingle", mock_get)
-    request = test_client.put(f"/notes/{id}", content=json.dumps(payload))
+    request = test_client.put(f"/notes/{id}", json=payload)
     assert request.status_code == status_code
 
 
