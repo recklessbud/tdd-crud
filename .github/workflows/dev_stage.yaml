@@ -36,7 +36,7 @@ jobs:
             --exit-zero
       - name: Convert Bandit SARIF to CodeQL SARIF
         run: |    
-            bandit-sarif-formatter \
+          python -m bandit-sarif-formatter \
             -i bandit.json \
             -o bandit.sarif
 
