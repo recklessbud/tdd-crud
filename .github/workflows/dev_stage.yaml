@@ -33,7 +33,7 @@ jobs:
       - name: Bandit scan
         uses: shundor/python-bandit-scan@ab1d87dfccc5a0ffab88be3aaac6ffe35c10d6cd
         with:
-          exit_zero: false        
+          exit_zero: "false"  
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           level: MEDIUM
           path: src/       
