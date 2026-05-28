@@ -30,25 +30,12 @@ jobs:
       #     python -m pip install --upgrade pip
       #     pip install -r requirements.txt
 
-      - name: Install Bandit
-        run: |
-         python -m pip install --upgrade pip
-         pip install bandit bandit-sarif-formatter
-      
-      - name: run bandit
-        run: |
-         bandit -r . -f json -o bandit_report.json
-         
-      - name: bandit-sarif-formatter
-        run: |
-         bandit-sarif-formatter -i bandit_report.json -o bandit_report.sarif
-
-      - name: Upload SARIF
-        uses: github/codeql-action/upload-sarif@v3
+      - name: Bandit scan
+        uses: shundor/python-bandit-scan@ab1d87dfccc5a0ffab88be3aaac6ffe35c10d6cd
         with:
-          sarif_file: bandit_report.sarif
-
-
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          level: MEDIUM
+          path: src/       
 
   finished:
     permissions:
@@ -121,13 +108,3 @@ jobs:
       #     echo "$PR_BRANCH and $DEFAULT_BRANCH"
       #     export DEV_STAGE_INFO=dev
       #     gh pr create --title "Automated PR from Dev Stage" --body "$DEV_STAGE_INFO" --base $DEFAULT_BRANCH --head $PR_BRANCH --repo $GITHUB_REPOSITORY
-
-
-
-      # - name: Bandit scan
-      #   uses: shundor/python-bandit-scan@ab1d87dfccc5a0ffab88be3aaac6ffe35c10d6cd
-      #   with:
-      #     exit_zero: "false"  
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #     level: MEDIUM
-      #     path: src/       
