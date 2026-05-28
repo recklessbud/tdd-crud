@@ -37,7 +37,7 @@ jobs:
       
       - name: run bandit
         run: |
-         bandit -r src/ -ll -ii -f json -o bandit_report.json
+         bandit -r . -f json -o bandit_report.json
          
       - name: bandit-sarif-formatter
         run: |
