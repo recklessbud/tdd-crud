@@ -33,7 +33,7 @@ jobs:
           bandit -r src/ -f json \
             -o bandit.json \
             -l -i \
-            --exit-zero    # generate report even if findings exist
+            --exit-zero
       - name: Convert Bandit SARIF to CodeQL SARIF
         run: |    
             bandit-sarif-formatter \
