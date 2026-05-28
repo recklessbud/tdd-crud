@@ -44,7 +44,7 @@ jobs:
       - name: Run Semgrep
         run: |
           semgrep \
-            --config=p/security-audit \
+            --config=auto \
             --sarif \
             . > semgrep.sarif
 
