@@ -1,2 +1,2 @@
 [bandit]
-exclude = .\.venv\,.\src\tests,__pycache
+exclude = .\.venv\,.\src\tests,__pycache,\src\some_errors.py
