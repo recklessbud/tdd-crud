@@ -30,12 +30,28 @@ jobs:
       #     python -m pip install --upgrade pip
       #     pip install -r requirements.txt
 
-      - name: Bandit scan
-        uses: shundor/python-bandit-scan@ab1d87dfccc5a0ffab88be3aaac6ffe35c10d6cd
+      # - name: Bandit scan
+      #   uses: shundor/python-bandit-scan@ab1d87dfccc5a0ffab88be3aaac6ffe35c10d6cd
+      #   with:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     level: MEDIUM
+      #     path: src/       
+
+
+      - name: Install Semgrep
+        run: pip install semgrep
+
+      - name: Run Semgrep
+        run: |
+          semgrep \
+            --config=p/security-audit \
+            --sarif \
+            . > semgrep.sarif
+
+      - name: Upload SARIF
+        uses: github/codeql-action/upload-sarif@v3
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          level: MEDIUM
-          path: src/       
+          sarif_file: semgrep.sarif
 
   finished:
     permissions:
