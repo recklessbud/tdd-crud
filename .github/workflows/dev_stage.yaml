@@ -30,8 +30,7 @@ jobs:
 
       - name: Run Bandit
         run: |
-          bandit -r src/ \
-            -f sarif \
+          bandit -r src/ -f sarif \
             -o bandit.sarif \
             -l -i \
             --exit-zero    # generate report even if findings exist
