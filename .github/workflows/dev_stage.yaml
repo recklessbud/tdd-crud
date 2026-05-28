@@ -7,6 +7,8 @@ on:
   
 jobs:
   finished:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     needs: [build]
     steps:
