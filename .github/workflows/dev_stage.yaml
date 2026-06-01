@@ -59,17 +59,28 @@ jobs:
 
 
   sca-scanning:
-    permissions:
-      contents: read
-      security-events: write
-      actions: read
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@master
-      - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/python-3.10@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+   permissions:
+     contents: read
+     security-events: write
+     actions: read
+   runs-on: ubuntu-latest
+   needs: [build]
+   steps:
+     - name: Install Poetry
+       run: pip install poetry
+
+     - name: Install dependencies via Poetry
+       run: poetry install --no-root
+
+     - name: Export requirements from Poetry
+       run: poetry export -f src/requirements.txt --output requirements.txt --without-hashes
+
+     - name: Run Snyk
+       uses: snyk/actions/python-3.10@master
+       env:
+         SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+       with:
+         args: --file=requirements.txt
 
   finished:
     permissions:
