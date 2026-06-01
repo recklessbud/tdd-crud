@@ -57,6 +57,20 @@ jobs:
           sarif_file: semgrep.sarif
           category: semgrep    # ← gives it a unique name in code scanner
 
+
+  sca-scanning:
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
   finished:
     permissions:
       contents: read
