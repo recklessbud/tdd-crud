@@ -68,7 +68,6 @@ jobs:
    steps:
       - name: Install snyk
         run: npm install -g snyk
-
       - name: Run Snyk
         run:  snyk test --file=src/requirements.txt --package-manager=pip
         env:
