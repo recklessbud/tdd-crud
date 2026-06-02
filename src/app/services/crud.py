@@ -13,6 +13,12 @@ async def getSingle(id: int):
     fetch = await db.fetch_one(query=query)
     return fetch
 
+token = "ghp_16C7e42F292c6912E7710c838347Ae178B4ab"  # GitHub PAT
+
+# Would be caught — matches regex patterns:
+private_key = "-----BEGIN PRIVATE KEY-----\nMII..."
+db_url = "postgresql://user:password@host/db"
+
 
 async def fetch_all():
     fetch_notes = notes.select()
