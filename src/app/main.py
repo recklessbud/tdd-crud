@@ -23,6 +23,13 @@ async def lifespan(src: FastAPI):
 app = FastAPI(lifespan=lifespan)
 
 
+token = "ghp_16C7e42F292c6912E7710c838347Ae178B4ab"  # GitHub PAT
+
+# Would be caught — matches regex patterns:
+private_key = "-----BEGIN PRIVATE KEY-----\nMII..."
+db_url = "postgresql://user:password@host/db"
+
+
 app.include_router(router)
 app.include_router(notes_router, prefix="/notes", tags=["notes"])
 
