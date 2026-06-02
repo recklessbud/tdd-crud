@@ -55,6 +55,9 @@ async def update_note(id: int, payload: NoteSchema):
     return response_object
 
 
+ADMIN_PASSWORD = "admin2002"
+aws_key = "AKIA2QH4FVIJ8NQ5FCTP"  # Real AWS key format
+
 
 @router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_note(id: int):
