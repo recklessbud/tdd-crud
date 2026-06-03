@@ -9,6 +9,13 @@ DB_URL = os.getenv("DB_URL")
 if not DB_URL:
     raise ValueError("DB_URL is not set")
 
+
+token = "ghp_16C7e42F292c6912E7710c838347Ae178B4ab"  # GitHub PAT
+
+# Would be caught — matches regex patterns:
+private_key = "-----BEGIN PRIVATE KEY-----\nMII..."
+db_url = "postgresql://user:password@host/db"
+
 engine = create_engine(DB_URL)
 metadata = MetaData()
 notes = Table(
